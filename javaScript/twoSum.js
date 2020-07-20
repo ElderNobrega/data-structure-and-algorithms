@@ -12,7 +12,7 @@ return [0, 1]
  */
 
 
-//solution using single loop
+//solution using nested loop
 var twoSum = function(nums, target) {
     
     for (let i = 0; i < nums.length; i++) {
