@@ -7,7 +7,7 @@ class LinkedList {
             next: null
         }
         this.tail = this.head;
-        this.length = 1;
+        this.length = 1
     }
 
     append(value) {
@@ -15,7 +15,7 @@ class LinkedList {
             value: value,
             next: null
         };
-        this.tail.next = newNode;
+        this.tail.next = newNode
         this.tail = newNode
         this.length++
         return this
@@ -65,6 +65,25 @@ class LinkedList {
             return newNode
         }    
     }
+
+    remove(index) {
+        if(index >= this.length) {
+            index = this.length - 1
+        } 
+        let curr = this.head
+        let prev = null
+        let count = 0
+        if (index === 0) {
+            this.head = curr.next
+            return;
+        }
+        while(curr != null && count != index) {
+            prev = curr
+            curr = curr.next
+            count++
+        }
+            prev.next = curr.next
+    }
 }
 
 const newLinkedList = new LinkedList(10)
@@ -72,4 +91,5 @@ newLinkedList.append(5)
 newLinkedList.append(16)
 newLinkedList.prepend(1)
 newLinkedList.insert(25, 93)
+newLinkedList.remove(2)
 console.log(newLinkedList.printList())
