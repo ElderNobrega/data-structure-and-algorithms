@@ -75,6 +75,7 @@ class LinkedList {
         let count = 0
         if (index === 0) {
             this.head = curr.next
+            this.length--
             return;
         }
         while(curr != null && count != index) {
@@ -83,6 +84,7 @@ class LinkedList {
             count++
         }
             prev.next = curr.next
+            this.length--
     }
 }
 
