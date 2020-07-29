@@ -32,7 +32,24 @@ class doublyLinkedList {
             }
             curr.next = new Node(num, curr.next, curr)
         }
-    } 
+    }
+    
+    delete(num) {
+        if (this.head != null && num > this.head.data) {
+            let curr = this.head
+            while (curr != null && num > curr.next.data) {
+                curr = curr.next
+            }
+            if (curr.next != null && num == curr.next.data) {
+                curr.next = curr.next.next
+                curr.next.prev = curr
+            }
+        }
+        else {
+            this.head.next.prev = null
+            this.head = this.head.next
+        }
+    }
 
     printList() {
         if (this.head != null) {
@@ -56,4 +73,5 @@ const newLinkedList = new doublyLinkedList()
 newLinkedList.addFront(10)
 newLinkedList.addLast(15)
 newLinkedList.addInOrder(19)
+newLinkedList.delete(15)
 newLinkedList.printList()
