@@ -19,6 +19,22 @@ class doublyLinkedList {
             curr.next = new Node(num, null, curr)
         }
     }
+
+    addInOrder(num) {
+        if (this.head == null || num < this.head.data) {
+            this.head = new Node(num, this.head)
+            this.head.next.prev = this.head
+        }
+        else {
+            let curr = this.head
+            while (curr.next != null && num > curr.next.data) {
+                curr = curr.next
+            }
+            curr.next = new Node(num, curr.next, curr)
+        }
+    } 
+
+    
 }
 
 class Node {
@@ -31,4 +47,5 @@ class Node {
 const newLinkedList = new doublyLinkedList()
 newLinkedList.addFront(10)
 newLinkedList.addLast(15)
+newLinkedList.addInOrder(1)
 console.log(newLinkedList)
