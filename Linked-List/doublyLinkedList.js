@@ -34,7 +34,15 @@ class doublyLinkedList {
         }
     } 
 
-    
+    printList() {
+        if (this.head != null) {
+            let curr = this.head
+            while (curr != null) {
+                console.log(curr.data)
+                curr = curr.next
+            }
+        }
+    }
 }
 
 class Node {
@@ -47,5 +55,5 @@ class Node {
 const newLinkedList = new doublyLinkedList()
 newLinkedList.addFront(10)
 newLinkedList.addLast(15)
-newLinkedList.addInOrder(1)
-console.log(newLinkedList)
+newLinkedList.addInOrder(19)
+newLinkedList.printList()
