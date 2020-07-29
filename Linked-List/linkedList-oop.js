@@ -48,7 +48,13 @@ class LinkedList {
     }
 
     printList() {
-
+        if (this.head != null) {
+            let curr = this.head
+            while (curr != null) {
+                console.log(curr.data)
+                curr = curr.next
+            }
+        }
     }
 }
 
@@ -64,4 +70,4 @@ newLinkedList.addFront(10)
 newLinkedList.addLast(15)
 newLinkedList.addInOrder(19)
 newLinkedList.delete(10)
-console.log(newLinkedList)
+newLinkedList.printList()
