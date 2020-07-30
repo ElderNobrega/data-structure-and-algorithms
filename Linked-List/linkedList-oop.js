@@ -47,6 +47,21 @@ class LinkedList {
         }
     }
 
+    reverse() {
+        this.printRevHelper(this.head)
+    }
+
+    printRevHelper(node) {
+        if (node == null) {return}
+        this.printRevHelper(node.next)
+        if (node == this.head) {
+            console.log(node.data)
+        } 
+        else {
+            console.log(node.data)
+        }
+    }
+
     printList() {
         if (this.head != null) {
             let curr = this.head
@@ -70,4 +85,5 @@ newLinkedList.addFront(10)
 newLinkedList.addLast(15)
 newLinkedList.addInOrder(19)
 newLinkedList.delete(10)
+newLinkedList.reverse()
 newLinkedList.printList()
