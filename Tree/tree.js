@@ -1,8 +1,8 @@
 class Node {
-    constructor(value) {
+    constructor(data) {
         this.left = null
         this.right = null
-        this.data = value
+        this.data = data
     }
 }
 
@@ -11,13 +11,15 @@ class Tree {
         this.root = null
     }
 
-    insert(value) {
+    insert(data) {
         if (!this.root) {
-            return new Node(value)
+            this.root = new Node(data)
+            return this
         }
         let curr = this.root
-        
-        while (!curr) {
+        let prev = null
+        while (curr) {
+            prev = curr
             //go to the left
             if (data < curr.data) {
                 curr = curr.left
@@ -27,11 +29,31 @@ class Tree {
                 curr = curr.right
             }
         } 
-
+        if (data < prev.data) {
+            prev.left = new Node(data)
+        }
+        else {
+            prev.right = new Node(data)
+        }
+        return this
     }
 
-    search(value) {
-
+    search(data) {
+        let curr = this.root
+        while (curr) {
+            if (data == curr.data) {
+                return curr
+            }
+            //go to the left
+            if (data < curr.data) {
+                curr = curr.left 
+            } 
+            //go to the right
+            else {
+                curr = curr.right
+            }
+        }
+        return null
     }
 }
 
@@ -40,4 +62,10 @@ const BST = new Tree
 console.log(BST)
 BST.insert(9)
 BST.insert(4)
+BST.insert(6)
+BST.insert(20)
+BST.insert(170)
+BST.insert(15)
+BST.insert(1)
 console.log(BST)
+console.log(BST.search(20))
