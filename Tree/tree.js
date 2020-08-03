@@ -12,14 +12,29 @@ class Tree {
     }
 
     insert(value) {
-        if (!this.root) {
-            this.root = new Node(value)
-        }
-        else {
-            let curr = this.root
-            if (value < curr.data) {
-                
-            }
-        }
+        this.root = this.insertWorker(this.root, value)
+    }
+
+    insertWorker(curr, data) {
+        if (!curr) {return new Node(data)}
+        if (data < curr.data) {curr.left = this.insertWorker(curr.left, data)}
+        if (data > curr.data) {curr.right = this.insertWorker(curr.right, data)}
+        return curr
+    }
+
+    lookUp(value) {
+        
     }
 }
+
+const BST = new Tree
+
+console.log(BST)
+BST.insert(9)
+BST.insert(4)
+BST.insert(6)
+BST.insert(20)
+BST.insert(170)
+BST.insert(15)
+BST.insert(1)
+console.log(BST)
