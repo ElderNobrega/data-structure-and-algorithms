@@ -12,26 +12,18 @@ class Tree {
     }
 
     insert(value) {
-        if (!this.root) {
-            return new Node(value)
-        }
-        let curr = this.root
-        
-        while (!curr) {
-            //go to the left
-            if (data < curr.data) {
-                curr = curr.left
-            } 
-            //go to the right
-            else {
-                curr = curr.right
-            }
-        } 
+        this.root = this.insertWorker(this.root, value)
+    }
 
+    insertWorker(curr, data) {
+        if (!curr) {return new Node(data)}
+        if (data < curr.data) {curr.left = this.insertWorker(curr.left, data)}
+        if (data > curr.data) {curr.right = this.insertWorker(curr.right, data)}
+        return curr
     }
 
     search(value) {
-
+        
     }
 }
 
