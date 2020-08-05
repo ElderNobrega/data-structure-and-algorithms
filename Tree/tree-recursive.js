@@ -23,7 +23,41 @@ class Tree {
     }
 
     search(value) {
-        
+        return this.searchHelper(this.root, value)
+    }
+    searchHelper(curr, data) {
+        if (!curr) {return false}
+        if (data < curr.data) {return this.searchHelper(curr.left, data)}
+        else if (data > curr.data) {return this.searchHelper(curr.right, data)}
+        return curr.data
+    }
+
+    remove(data) {
+        this.root = this.removeHelper(this.root, data)
+    }
+
+    removeHelper(curr, data) {
+        if (!curr) {
+            return curr
+        }
+        if (data < curr.data) {
+            curr.left = this.removeHelper(curr.left, data)
+        }
+        if (data > curr.data) {
+            curr.right = this.removeHelper(curr.right, data)
+        }
+        if (data == curr.data) {
+            if (curr.left == null) {return curr.right}
+            if (curr.right == null) {return curr.left}
+
+            let next = curr.right
+            while (next.left) {
+                next = next.left
+            }
+            curr.data = next.data
+            curr.right = this.removeHelper(curr.right, next.data)
+        }
+        return curr
     }
 }
 
@@ -37,4 +71,6 @@ BST.insert(20)
 BST.insert(170)
 BST.insert(15)
 BST.insert(1)
+BST.remove(4)
+console.log(BST.search(1))
 console.log(BST)
